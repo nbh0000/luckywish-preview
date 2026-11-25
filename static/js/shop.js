@@ -675,4 +675,54 @@
     });
     try { if (sessionStorage.getItem(VKEY) === 'sample') setView('sample'); } catch (e) {}
   })();
+
+  // ===== 상품 분류: 종류(인형/미니피규어) × 인형 이름. 주소 #c=이름&k=figure 로 공유 가능 =====
+  (function () {
+    var bar = document.querySelector('[data-cat-bar]');
+    if (!bar) return;
+    var grid = document.querySelector('[data-view-grid="live"]');
+    var empty = bar.querySelector('[data-cat-empty]');
+    var state = { k: '', c: '' };
+    function apply(push) {
+      var shown = 0;
+      Array.prototype.forEach.call(grid.querySelectorAll('[data-product]'), function (card) {
+        var ok = (!state.k || card.getAttribute('data-kind') === state.k) && (!state.c || card.getAttribute('data-char') === state.c);
+        card.hidden = !ok;
+        if (ok) shown++;
+      });
+      Array.prototype.forEach.call(bar.querySelectorAll('[data-cat-kind]'), function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-cat-kind') === state.k ? 'true' : 'false'); });
+      Array.prototype.forEach.call(bar.querySelectorAll('[data-cat-char]'), function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-cat-char') === state.c ? 'true' : 'false'); });
+      if (empty) empty.hidden = shown > 0;
+      if (push) {
+        var h = [];
+        if (state.c) h.push('c=' + encodeURIComponent(state.c));
+        if (state.k) h.push('k=' + state.k);
+        try { history.replaceState(null, '', h.length ? '#' + h.join('&') : location.pathname + location.search); } catch (e) {}
+      }
+    }
+    bar.addEventListener('click', function (ev) {
+      var b = ev.target.closest('[data-cat-kind],[data-cat-char]');
+      if (!b) return;
+      if (b.hasAttribute('data-cat-kind')) state.k = b.getAttribute('data-cat-kind');
+      else { var c = b.getAttribute('data-cat-char'); state.c = state.c === c ? '' : c; }
+      apply(true);
+      if (b.hasAttribute('data-cat-char') && b.scrollIntoView) b.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+    });
+    // 가로 스크롤 끝 페이드
+    var chips = bar.querySelector('.cat-chips');
+    if (chips) {
+      var wrap = chips.parentNode;
+      var edge = function () {
+        wrap.classList.toggle('at-start', chips.scrollLeft < 4);
+        wrap.classList.toggle('at-end', chips.scrollLeft + chips.clientWidth > chips.scrollWidth - 4);
+      };
+      chips.addEventListener('scroll', edge, { passive: true });
+      window.addEventListener('resize', edge);
+      edge();
+    }
+    var m = location.hash.match(/c=([^&]+)/), k = location.hash.match(/k=(doll|figure)/);
+    if (m) { try { state.c = decodeURIComponent(m[1]); } catch (e) {} }
+    if (k) state.k = k[1];
+    if (m || k) apply(false);
+  })();
 })();
