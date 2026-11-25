@@ -1,0 +1,8 @@
+# 정적 파일(이미지·CSS·JS)은 브라우저에 오래 보관한다. CSS·JS는 주소의 ?v= 값으로 갱신한다.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 30 days"
+</IfModule>
+<IfModule mod_headers.c>
+  Header set Cache-Control "public, max-age=2592000"
+</IfModule>
