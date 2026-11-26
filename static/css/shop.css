@@ -1708,3 +1708,16 @@ body:has(.hero) .top-nav { padding-left: 0; margin-left: -14px; border-left: 0; 
 @media (max-width: 1100px) and (min-width: 901px) { .qk-ticker { width: 58%; } .qk-win .qk-label small { display: none; } }
 @media (max-width: 700px) { .qk-ticker { width: 56%; height: 72px; } .qk-ticker li { height: 24px; line-height: 24px; } .qk-ticker li strong { font-size: 13.5px; } .qk-ticker li span { font-size: 12px; } }
 @media (max-width: 700px) { .qk-win { padding-bottom: 54px; } .qk-win .qk-main { margin-bottom: 2px; } }
+
+/* 배너 폭을 상품 영역에 맞춤 (좌우 여백, 네 모서리 둥글게) */
+.hero { width: calc(100% - 2 * var(--gutter)); max-width: calc(1144px - 2 * var(--gutter)); margin-inline: auto; margin-top: calc(-1 * var(--top-h, 64px) + 12px); border-radius: clamp(20px, 2.6vw, 32px); }
+.hero .hero-in { padding-top: calc(var(--top-h, 64px) + clamp(8px, 2vw, 18px)); }
+body:has(.hero) .top .wrap { max-width: 1144px; padding-inline: calc(var(--gutter) + clamp(12px, 2vw, 24px)); }
+body:has(.hero) .top:not(.is-solid) { top: 12px; }
+@media (max-width: 1199px) { .hero::before, .hero::after { top: calc(var(--top-h, 64px) - 12px); } }
+@media (max-width: 480px) { .hero { width: calc(100% - 20px); } body:has(.hero) .top .wrap { padding-inline: 22px; } }
+.hero { max-width: calc(1280px - 2 * var(--gutter)); }
+body:has(.hero) .top .wrap { max-width: 1280px; }
+@media (min-width: 1600px) { .hero { max-width: calc(1480px - 2 * var(--gutter)); } body:has(.hero) .top .wrap { max-width: 1480px; } }
+.hero::before, .hero::after { top: calc(var(--top-h, 64px) - 12px); height: auto; }
+@media (max-width: 480px) { .hero { width: calc(100% - 2 * var(--gutter)); } body:has(.hero) .top .wrap { padding-inline: calc(var(--gutter) + 10px); } }
