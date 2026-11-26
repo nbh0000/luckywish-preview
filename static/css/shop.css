@@ -1878,3 +1878,4 @@ body:has(.home-main) .top .user-btn:active { transform: scale(.97); }
 @media (max-width: 899px) { body:has(.home-main) .top .menu-btn { display: inline-grid; place-items: center; } }
 @media (max-width: 420px) { body:has(.home-main) .user-txt { display: none; } body:has(.home-main) .top .user-btn { width: 38px; padding: 0; justify-content: center; } }
 .home-main > .quick { margin-top: clamp(4px, 1vw, 12px); }
+main.wrap { width: 100%; box-sizing: border-box; }
