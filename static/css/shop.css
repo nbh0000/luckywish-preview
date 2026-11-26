@@ -1343,3 +1343,116 @@ body.foot-visible .cartbar { transform: translateY(110%); }
 /* 시크왕 순위 상자: 장식 위에서 흐려 보이지 않게 불투명 초록 */
 .hero-facts a { background: rgba(10, 53, 29, 0.88); border-color: rgba(231, 182, 73, 0.32); -webkit-backdrop-filter: none; backdrop-filter: none; box-shadow: 0 10px 24px -16px rgba(0, 0, 0, 0.6); max-width: 100%; }
 @media (hover: hover) and (pointer: fine) { .hero-facts a:hover { background: rgba(14, 66, 37, 0.95); } }
+
+/* ===== 메인 시안 반영 (2026-11-26, 사용자 시안 '귀여운 행운을 만나요') =====
+   상아색 바탕 + 숲초록 글자, 당첨 소식은 살구색 띠, 인형 이름은 동그라미 사진으로 고름.
+   배너(초록 로고 띠)는 그대로. */
+:root { --bg: #f8f4ec; --ink: #263a2d; --muted: #6b7268; --line: #e6e0d4; --peach: #f6e2d7; --peach-d: #e9c9b8; --sage: #dfe7d6; }
+body { background: var(--bg); background-image: none; }
+.top { background: color-mix(in srgb, #fbf8f2 90%, transparent); box-shadow: 0 1px 0 var(--line); }
+.top-nav { gap: 6px; padding-left: 22px; margin-left: 6px; border-left: 1px solid var(--line); }
+.top-nav a { color: var(--ink); font-size: 15px; font-weight: 700; padding: 10px 14px; }
+.top-nav a[aria-current="page"]::after { background: var(--ink); }
+.account-links { display: none; }
+.top .icon-btn { background: transparent; color: var(--ink); box-shadow: none; border: 0; width: 42px; height: 42px; border-radius: 10px; }
+@media (hover: hover) and (pointer: fine) { .top .icon-btn:hover { background: rgba(38, 58, 45, 0.06); } }
+.live-pill { border-radius: 8px; }
+
+/* 당첨 소식 띠 */
+.news-strip { margin-top: clamp(14px, 2vw, 22px); display: grid; grid-template-columns: auto auto minmax(0, 1fr) auto; align-items: center; column-gap: 14px; min-height: 58px; padding: 10px 20px; border-radius: 12px; background: var(--peach); color: #3a2c26; text-decoration: none; touch-action: manipulation; }
+.news-ico { color: #b9785e; }
+.news-strip strong { font-size: 16.5px; font-weight: 800; letter-spacing: -0.01em; }
+.news-meta { display: flex; align-items: center; gap: 12px; padding-left: 16px; border-left: 1px solid var(--peach-d); font-size: 14.5px; color: #5b4a42; min-width: 0; }
+.news-meta b { font-weight: 700; font-variant-numeric: tabular-nums; }
+.news-go { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 700; color: #6a4e42; white-space: nowrap; }
+.news-go i { font-style: normal; font-size: 20px; line-height: 1; margin-top: -2px; }
+.news-strip:active { transform: scale(0.99); }
+@media (hover: hover) and (pointer: fine) { .news-strip { transition: background .2s; } .news-strip:hover { background: #f3d9cb; } }
+@media (max-width: 640px) {
+  .news-strip { grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "ico title go" "ico meta go"; row-gap: 2px; padding: 12px 14px; column-gap: 12px; }
+  .news-ico { grid-area: ico; }
+  .news-strip strong { grid-area: title; font-size: 15.5px; }
+  .news-meta { grid-area: meta; padding-left: 0; border-left: 0; font-size: 13.5px; gap: 8px; }
+  .news-go { grid-area: go; font-size: 0; }
+  .news-go i { font-size: 24px; }
+}
+
+/* 방송 상태·공지: 상아 바탕에 맞춰 차분하게 */
+.banner { background: #fff; }
+.banner.off { background: #fbf6e6; }
+
+/* 제목 */
+.home-main .section-title { font-size: clamp(23px, 2.4vw, 30px); color: var(--ink); margin: clamp(30px, 4vw, 46px) 2px 14px; }
+
+/* 어떤 친구를 찾으세요? */
+.friends .section-title::after { content: ""; display: inline-block; width: 64px; height: 18px; margin-left: 10px; background: url(/luckywish-preview/static/img/clover-leaf.png) right center / 18px no-repeat, linear-gradient(var(--peach-d), var(--peach-d)) left 60% / 46px 1.5px no-repeat; opacity: 0.9; }
+.friends-rail { gap: clamp(8px, 1.4vw, 14px); padding-block: 4px 6px; }
+.friend { -webkit-appearance: none; appearance: none; flex: none; display: grid; justify-items: center; gap: 8px; width: 78px; padding: 0; border: 0; background: none; color: var(--ink); font: inherit; cursor: pointer; touch-action: manipulation; scroll-snap-align: start; }
+.friend-av { display: block; width: 72px; height: 72px; border-radius: 50%; overflow: hidden; background: #efe7db; box-shadow: inset 0 0 0 1px rgba(38, 58, 45, 0.06); transition: box-shadow .2s, transform .2s; }
+.friend-av img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.friend-av img.is-clover { object-fit: contain; padding: 18px; }
+.friend:first-child .friend-av { background: var(--sage); }
+.friend-name { font-size: 14px; font-weight: 700; white-space: nowrap; }
+.friend[aria-pressed="true"] .friend-av { box-shadow: 0 0 0 2.5px var(--bg), 0 0 0 4.5px var(--ink); }
+.friend[aria-pressed="true"] .friend-name { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 2px; }
+.friend.is-empty .friend-av { opacity: 0.55; filter: saturate(0.6); }
+.friend.is-empty .friend-name { color: var(--muted); }
+.friend:active .friend-av { transform: scale(0.95); }
+.friend:focus-visible { outline: none; }
+.friend:focus-visible .friend-av { box-shadow: 0 0 0 2.5px var(--bg), 0 0 0 4.5px var(--pink-d); }
+@media (hover: hover) and (pointer: fine) { .friend:hover .friend-av { transform: translateY(-3px); } }
+.friends-wrap::before { background: linear-gradient(90deg, var(--bg), rgba(248, 244, 236, 0)); }
+.friends-wrap::after { background: linear-gradient(270deg, var(--bg), rgba(248, 244, 236, 0)); }
+@media (min-width: 900px) {
+  .friend { width: 84px; }
+  .friend-av { width: 82px; height: 82px; }
+  .friends-rail { flex-wrap: nowrap; overflow-x: auto; justify-content: space-between; scrollbar-width: none; }
+}
+
+/* 오늘의 럭키 픽 */
+.pick-head { margin: clamp(34px, 4.4vw, 52px) 2px 16px; align-items: end; gap: 12px 18px; }
+.pick-title { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 16px; min-width: 0; }
+.home-main .pick-head .section-title { margin: 0; }
+.pick-title p { margin: 0; padding-left: 16px; border-left: 1px solid var(--line); color: var(--muted); font-size: 14.5px; }
+.view-sample .pick-title p { display: none; }
+.pick-tools { display: flex; align-items: center; gap: 10px; margin-left: auto; }
+.kind-tabs { display: flex; gap: 2px; }
+.kind-tabs button { -webkit-appearance: none; appearance: none; border: 0; background: none; padding: 8px 10px; border-radius: 8px; color: var(--muted); font: 700 14.5px/1 var(--f-body); cursor: pointer; touch-action: manipulation; }
+.kind-tabs button[aria-pressed="true"] { color: var(--ink); background: rgba(38, 58, 45, 0.07); }
+@media (hover: hover) and (pointer: fine) { .kind-tabs button:hover { color: var(--ink); } }
+.view-seg { background: rgba(38, 58, 45, 0.07); }
+@media (max-width: 640px) {
+  .pick-head { align-items: start; }
+  .pick-title p { flex-basis: 100%; padding-left: 0; border-left: 0; font-size: 13.5px; }
+  .pick-tools { margin-left: 0; width: 100%; justify-content: space-between; }
+  .kind-tabs button { padding: 8px 10px 8px 0; background: none; }
+  .kind-tabs button[aria-pressed="true"] { background: none; text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 2px; }
+}
+.home-main .cat-empty { background: #fff; border-radius: 12px; }
+
+/* 상품 카드: 상자 없이 사진 + 이름 */
+.home-main .grid { gap: clamp(14px, 2vw, 22px) clamp(12px, 1.8vw, 20px); }
+.home-main .card { padding: 0; background: none; border: 0; box-shadow: none; gap: 10px; }
+.home-main .thumb { border-radius: 14px; background: #fff; box-shadow: inset 0 0 0 1px rgba(38, 58, 45, 0.05); }
+.home-main .thumb img { object-fit: cover; }
+.home-main .card .name { padding: 0 2px; font-size: 15.5px; font-weight: 800; color: var(--ink); min-height: 0; }
+.home-main .card .row { padding: 0 2px; margin-top: -6px; }
+.home-main .card .price.hidden { font-size: 13.5px; font-weight: 600; color: var(--muted); }
+@media (min-width: 900px) { .home-main .card .name { font-size: 17px; } }
+@media (hover: hover) and (pointer: fine) {
+  .home-main .card:hover { transform: none; box-shadow: none; }
+  .home-main .card .thumb img { transition: transform .5s var(--ease); }
+  .home-main .card:hover .thumb img { transform: scale(1.04); }
+}
+
+/* 사진 자랑 제목 줄 */
+.photo-head h2 { color: var(--ink); }
+.foot { background: #efe9dd; }
+.friends { display: grid; grid-template-columns: minmax(0, 1fr); min-width: 0; }
+.friends-wrap { min-width: 0; }
+.friend { position: relative; }
+/* 친구 버튼: 이전 칩 모양 덮어쓰기 */
+.cat-chips .friend, .cat-chips .friend[aria-pressed="true"] { min-height: 0; padding: 0; border: 0; border-radius: 0; background: none; font-size: inherit; color: var(--ink); white-space: normal; }
+@media (hover: hover) and (pointer: fine) { .cat-chips .friend:hover { background: none; } }
+.friend-av img.is-clover { padding: 16px; }
+.friend.is-empty .friend-av { opacity: 0.72; filter: none; }
