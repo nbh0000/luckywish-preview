@@ -726,3 +726,15 @@
     if (m || k) apply(false);
   })();
 })();
+
+// 메인: 헤더가 초록 배너 위에 겹쳐 있다가 내려가면 배경이 깔림
+(function () {
+  var top = document.querySelector('.top');
+  if (!top || !document.querySelector('.hero')) return;
+  var root = document.documentElement;
+  function size() { root.style.setProperty('--top-h', top.offsetHeight + 'px'); }
+  function onScroll() { top.classList.toggle('is-solid', window.scrollY > 8); }
+  size(); onScroll();
+  window.addEventListener('resize', size, { passive: true });
+  window.addEventListener('scroll', onScroll, { passive: true });
+})();

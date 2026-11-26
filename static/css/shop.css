@@ -1456,3 +1456,61 @@ body { background: var(--bg); background-image: none; }
 @media (hover: hover) and (pointer: fine) { .cat-chips .friend:hover { background: none; } }
 .friend-av img.is-clover { padding: 16px; }
 .friend.is-empty .friend-av { opacity: 0.72; filter: none; }
+
+/* ===== HALL OF LUCK 이번 달 시크왕 (시안 하단 띠) ===== */
+.hall { --hall-ink: #2f4a35; margin-top: clamp(40px, 5vw, 64px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); align-items: stretch; min-height: clamp(300px, 30vw, 400px); border-radius: 20px; overflow: hidden; background: #cdd1ba; color: var(--hall-ink); container-type: inline-size; }
+.hall-copy { position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: center; gap: 14px; padding: clamp(26px, 4vw, 52px) clamp(22px, 4vw, 56px); }
+.hall-eyebrow { margin: 0; display: flex; align-items: center; gap: 14px; font: 600 13px/1 Georgia, 'Times New Roman', serif; letter-spacing: .32em; color: #4c5c4a; }
+.hall-eyebrow::after { content: ""; width: 64px; height: 1px; background: #a9b7a1; }
+.hall-title { margin: 0; display: flex; align-items: center; gap: 10px; font: 400 clamp(32px, 4vw, 50px)/1.1 var(--f-display); letter-spacing: -0.01em; color: var(--hall-ink); }
+.hall-laurel { flex: none; width: clamp(16px, 1.8vw, 22px); height: auto; color: #b4995d; }
+.hall-laurel.r { transform: scaleX(-1); }
+.hall-rank { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 0; max-width: 420px; }
+.hall-rank li { display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; align-items: baseline; gap: 10px; padding: 11px 0; border-top: 1px solid rgba(47, 74, 53, .14); }
+.hall-rank li:last-child { border-bottom: 1px solid rgba(47, 74, 53, .14); }
+.hall-pos { font-size: 14px; font-weight: 700; color: #566553; font-variant-numeric: tabular-nums; }
+.hall-rank strong { font-size: 17px; font-weight: 800; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.hall-rank em { font-style: normal; font-size: 14px; font-weight: 600; color: #4c5c4a; font-variant-numeric: tabular-nums; }
+.hall-rank .r1 .hall-pos { color: #9a7b35; }
+.hall-rank .r1 strong { font-size: 21px; }
+.hall-empty { margin: 4px 0 0; font-size: 15px; color: #4c5c4a; }
+.hall-more { align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; padding: 6px 0; font-size: 14.5px; font-weight: 700; color: var(--hall-ink); text-decoration: none; touch-action: manipulation; }
+.hall-more i { font-style: normal; font-size: 19px; line-height: 1; margin-top: -2px; transition: transform .2s; }
+@media (hover: hover) and (pointer: fine) { .hall-more:hover { text-decoration: underline; text-underline-offset: 4px; } .hall-more:hover i { transform: translateX(3px); } }
+.hall-more:active { opacity: .7; }
+.hall-photo { position: relative; min-height: 220px; }
+.hall-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 45% 60%; }
+.hall-photo::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 30%; z-index: 1; background: linear-gradient(90deg, #cdd1ba, rgba(205, 209, 186, 0)); }
+@media (max-width: 760px) {
+  .hall { grid-template-columns: 1fr; }
+  .hall-photo { order: -1; min-height: 0; aspect-ratio: 16 / 9; }
+  .hall-photo::before { inset: auto 0 0 0; width: auto; height: 40%; background: linear-gradient(0deg, #cdd1ba, rgba(205, 209, 186, 0)); }
+  .hall-copy { padding-top: 8px; }
+  .hall-rank { max-width: none; }
+}
+
+/* ===== 헤더를 배너와 같은 숲초록으로 (깅모지처럼 덮기) ===== */
+.top { background: #0a351d; color: #f4efe2; box-shadow: none; border-radius: 0 0 clamp(20px, 3vw, 28px) clamp(20px, 3vw, 28px); }
+body:has(.hero) .top { border-radius: 0; }
+.top-nav { border-left-color: rgba(244, 239, 226, 0.18); }
+.top-nav a { color: rgba(244, 239, 226, 0.82); }
+.top-nav a[aria-current="page"] { color: #fff; }
+.top-nav a[aria-current="page"]::after { background: #e9c56b; }
+@media (hover: hover) and (pointer: fine) { .top-nav a:hover { color: #fff; background: rgba(255, 255, 255, 0.07); } .top .icon-btn:hover { background: rgba(255, 255, 255, 0.08); } }
+.top .icon-btn { color: #f4efe2; }
+.top .icon-btn .badge { background: #e9c56b; color: #0a351d; }
+.live-pill { background: rgba(255, 255, 255, 0.1); color: rgba(244, 239, 226, 0.8); }
+.live-pill::before { background: rgba(244, 239, 226, 0.5); }
+.live-pill.on { background: #e9c56b; color: #0a351d; }
+.live-pill.on::before { background: #c0392b; }
+.top .top-link { color: #f4efe2; }
+@media (max-width: 760px) { .hall-photo { aspect-ratio: 4 / 3; } .hall-photo img { object-position: 50% 30%; } }
+/* 메인: 배너가 헤더 밑까지 올라와 헤더를 덮음 */
+body:has(.hero) .top { background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; transition: background-color .25s, box-shadow .25s; }
+body:has(.hero) .top.is-solid { background: rgba(10, 53, 29, 0.94); box-shadow: 0 6px 20px -12px rgba(0, 0, 0, 0.5); }
+@supports (backdrop-filter: blur(1px)) { body:has(.hero) .top.is-solid { background: rgba(10, 53, 29, 0.95); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); } }
+body:has(.hero) .top-nav { border-left-color: transparent; }
+.hero { margin-top: calc(-1 * var(--top-h, 64px)); }
+.hero .hero-in { padding-top: calc(var(--top-h, 64px) + clamp(16px, 3vw, 26px)); }
+@media (prefers-reduced-motion: reduce) { body:has(.hero) .top { transition: none; } }
+@media (max-width: 1199px) { .hero::before, .hero::after { top: calc(var(--top-h, 64px) - 6px); height: auto; } }
