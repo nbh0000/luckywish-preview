@@ -1046,7 +1046,16 @@ a, button { -webkit-tap-highlight-color: transparent; }
 .hero-facts em { font-style: normal; font-size: 12px; font-weight: 700; color: #cfe0d2; }
 .hero-facts a:active { transform: scale(0.97); }
 @media (hover: hover) and (pointer: fine) { .hero-facts a { transition: background .2s, border-color .2s; } .hero-facts a:hover { background: rgba(255, 255, 255, 0.14); border-color: rgba(231, 182, 73, 0.5); } }
-@media (max-width: 420px) { .hero-facts em { display: none; } }
+/* 시크왕 1~3위 */
+.hero-facts a.hero-king { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px 14px; padding: 10px 16px; }
+.hero-king > span { font-size: 12.5px; font-weight: 800; color: var(--gold); }
+.hero-king ol { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 14px; margin: 0; padding: 0; list-style: none; }
+.hero-king li { display: inline-flex; align-items: baseline; gap: 5px; white-space: nowrap; }
+.hero-king li i { font-style: normal; font-size: 11.5px; font-weight: 800; color: #a9c6af; }
+.hero-king li strong { font-size: 16px; color: var(--cream); }
+.hero-king li.r1 strong { font-size: 19px; color: var(--gold); }
+.hero-king li em { font-size: 11.5px; color: #a9c6af; }
+@media (max-width: 420px) { .hero-facts a.hero-king { padding: 9px 12px; gap: 4px 10px; } .hero-king > span { flex-basis: 100%; text-align: center; } .hero-king ol { gap: 4px 10px; } .hero-king li strong { font-size: 14.5px; } .hero-king li.r1 strong { font-size: 16.5px; } }
 @media (min-width: 1600px) { .hero-in, .top .wrap, .foot .wrap { max-width: 1480px; } .hero-logo { width: 580px; } }
 @media (max-height: 520px) and (orientation: landscape) { .hero-in { padding-block: 16px; } .hero-logo { width: min(46vw, 360px); } }
 
@@ -1125,7 +1134,6 @@ body.has-cartbar main.wrap { max-width: 1280px; padding-inline: var(--gutter); }
 
 /* 언박싱 사진 벽 + 이달의 시크왕 */
 .community { margin-top: clamp(36px, 5vw, 64px); display: grid; gap: 20px; }
-@media (min-width: 1024px) { .community { grid-template-columns: minmax(0, 1fr) 340px; align-items: start; } }
 .photo-head, .king-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
 .photo-head h2, .king-head h2 { margin: 0; font-family: var(--f-display); font-weight: 400; font-size: clamp(22px, 2.4vw, 28px); }
 .photo-head a, .king-head a { color: var(--muted); font-size: 14px; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--line); }
@@ -1265,3 +1273,73 @@ body.foot-visible .cartbar { transform: translateY(110%); }
 
 /* 좁은 폭(2열)에서는 사진이 홀수로 남지 않게 4장까지만 */
 @container (max-width: 519px) { .photo-tile:nth-child(n+5) { display: none; } }
+
+/* ===== 메인 다듬기 (2026-11-26, GPT 기획서 design-gen/plan/PLAN.md 반영) ===== */
+/* 배너: 띠 높이를 낮춰 첫 상품까지 거리 단축 */
+.hero-in { padding: clamp(16px, 3vw, 26px) var(--gutter) clamp(16px, 2.6vw, 26px); gap: clamp(10px, 1.6vw, 14px); }
+.hero-logo { width: min(66vw, 430px); }
+@media (min-width: 1600px) { .hero-logo { width: 460px; } }
+.hero-king li + li { padding-left: 14px; border-left: 1px solid rgba(251, 240, 207, 0.22); }
+@media (max-width: 420px) { .hero-king li + li { padding-left: 10px; } }
+
+/* 당첨자 띠 */
+.win-strip { border-radius: 10px; background: var(--night); }
+
+/* 방송 상태: 쉬는 중=크림, 방송 중=연초록. 점+문구로 구분 */
+.banner { margin-top: 12px; min-height: 48px; padding: 8px 8px 8px 16px; border-radius: 10px; box-shadow: none; font-size: 14.5px; font-weight: 700; gap: 10px; }
+.banner::before { content: ""; flex: none; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+.banner:not(.off) { background: #e8f2e4; color: var(--pink-dd); box-shadow: inset 0 0 0 1px #cfe3c9; }
+.banner:not(.off)::before { box-shadow: 0 0 0 4px rgba(47, 125, 69, 0.18); animation: lw-pulse 1.6s ease-out infinite; }
+.banner.off { background: var(--cream); color: #5f5434; box-shadow: inset 0 0 0 1px #efe3bb; }
+.banner.off::before { background: #b9a46a; }
+.banner-queue { border-radius: 8px; background: var(--night); min-height: 36px; }
+
+/* 공지: 금색 왼쪽 선 + '공지' 라벨, 상자 반복 없이 붙여서 */
+.notice { position: relative; margin-top: 8px; padding: 11px 14px 11px 60px; border-radius: 8px; background: #fff; color: var(--ink); font-size: 14px; line-height: 1.5; box-shadow: inset 3px 0 0 var(--gold), inset 0 0 0 1px var(--line); }
+.notice::before { content: "공지"; position: absolute; left: 16px; top: 12px; font-size: 12px; font-weight: 800; color: #9a7417; }
+.notice + .notice { margin-top: 0; border-top-left-radius: 0; border-top-right-radius: 0; box-shadow: inset 3px 0 0 var(--gold), inset 1px 0 0 var(--line), inset -1px 0 0 var(--line), inset 0 -1px 0 var(--line); }
+.notice:has(+ .notice) { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.notice.vbank-account, .notice.vbank-deadline { padding-left: 16px; }
+.notice.vbank-account::before, .notice.vbank-deadline::before { content: none; }
+
+/* 상품 제목·분류 */
+.section-title { font-size: clamp(22px, 2.2vw, 26px); }
+.view-seg { border-radius: 10px; }
+.view-seg button { border-radius: 8px; min-height: 36px; }
+.cat-kinds button, .cat-chips button { border-radius: 8px; min-height: 40px; }
+.cat-chips button { padding: 0 12px; }
+
+/* 상품 카드: 가는 선 + 옅은 그림자, 사진은 잘리지 않게 */
+.grid { gap: clamp(12px, 1.6vw, 20px); }
+.card { padding: 8px 8px 12px; border-radius: 14px; border: 1px solid #e0e6dc; box-shadow: 0 6px 16px -12px rgba(20, 57, 35, 0.28); gap: 8px; }
+.thumb { border-radius: 10px; background: #fff; aspect-ratio: 1; }
+.thumb img { object-fit: contain; }
+.card .name { font-size: 15px; line-height: 1.4; min-height: 2.8em; }
+.card .price { font-size: 18px; font-weight: 800; color: var(--night); }
+.card .price.hidden { font-size: 13px; font-weight: 700; color: var(--muted); }
+@media (min-width: 900px) { .card { padding: 10px 10px 14px; } .card .name { font-size: 16px; } .card .price { font-size: 20px; } }
+@media (hover: hover) and (pointer: fine) { .card { transition: border-color .2s, box-shadow .2s, transform .2s; } .card:hover { border-color: #c5d6c0; box-shadow: 0 14px 28px -18px rgba(20, 57, 35, 0.4); transform: translateY(-2px); } }
+
+/* 후기 사진: 캡션 항상 보이게 */
+.photo-tile { border-radius: 10px; }
+.photo-cap { opacity: 1; transform: none; padding: 30px 10px 9px; background: linear-gradient(rgba(12, 32, 20, 0), rgba(12, 32, 20, 0.78) 55%); }
+.photo-cap { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.photo-cap b { display: block; font-size: 12px; color: var(--gold-l); }
+
+/* 하단 고정 바 */
+.cartbar .btn { border-radius: 8px; min-height: 48px; }
+.cartbar .count { border-radius: 6px; }
+
+/* 푸터: 고정 바 자리는 푸터 안에서 확보해 아래 빈 띠 없앰 */
+.has-cartbar { padding-bottom: 0; }
+.has-cartbar .foot { padding-bottom: calc(var(--bar-h) + 28px + env(safe-area-inset-bottom, 0px)); }
+.foot { padding-top: 28px; font-size: 13px; }
+.foot .brand { font-size: 20px; }
+.foot-links { gap: 0 18px; }
+.foot-links a { display: inline-flex; align-items: center; min-height: 40px; font-size: 13.5px; }
+.foot .biz { gap: 2px 16px; line-height: 1.6; }
+.foot .biz span { overflow-wrap: anywhere; }
+.has-cartbar .foot { padding-bottom: calc(30px + env(safe-area-inset-bottom, 0px)); }
+/* 시크왕 순위 상자: 장식 위에서 흐려 보이지 않게 불투명 초록 */
+.hero-facts a { background: rgba(10, 53, 29, 0.88); border-color: rgba(231, 182, 73, 0.32); -webkit-backdrop-filter: none; backdrop-filter: none; box-shadow: 0 10px 24px -16px rgba(0, 0, 0, 0.6); max-width: 100%; }
+@media (hover: hover) and (pointer: fine) { .hero-facts a:hover { background: rgba(14, 66, 37, 0.95); } }
