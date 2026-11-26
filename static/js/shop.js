@@ -738,3 +738,30 @@
   window.addEventListener('resize', size, { passive: true });
   window.addEventListener('scroll', onScroll, { passive: true });
 })();
+
+// 전체 메뉴(모바일): 열기·닫기, Esc, 바깥 누르면 닫힘
+(function () {
+  var menu = document.querySelector('[data-menu]');
+  var btn = document.querySelector('[data-menu-open]');
+  if (!menu || !btn) return;
+  function open() {
+    menu.hidden = false;
+    requestAnimationFrame(function () { menu.classList.add('is-open'); });
+    btn.setAttribute('aria-expanded', 'true');
+    document.documentElement.style.overflow = 'hidden';
+    var first = menu.querySelector('.site-menu-links a');
+    if (first) first.focus({ preventScroll: true });
+  }
+  function close() {
+    menu.classList.remove('is-open');
+    btn.setAttribute('aria-expanded', 'false');
+    document.documentElement.style.overflow = '';
+    setTimeout(function () { if (!menu.classList.contains('is-open')) menu.hidden = true; }, 260);
+    btn.focus({ preventScroll: true });
+  }
+  btn.addEventListener('click', open);
+  menu.addEventListener('click', function (e) {
+    if (e.target.closest('[data-menu-close]') || e.target.closest('a')) close();
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) close(); });
+})();
