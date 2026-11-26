@@ -1666,3 +1666,29 @@ body:has(.hero) .top-nav { padding-left: 0; margin-left: -14px; border-left: 0; 
 .qk-rank .r1 strong { background-image: linear-gradient(100deg, #6e4a0c 0%, #a87b1f 30%, #d9a83a 45%, #a87b1f 60%, #6e4a0c 100%); }
 .qk-rank .r2 strong { background-image: linear-gradient(100deg, #3e454d 0%, #6b737c 30%, #9aa3ad 45%, #6b737c 60%, #3e454d 100%); }
 .qk-rank .r3 strong { background-image: linear-gradient(100deg, #5e3213 0%, #94592b 30%, #c47f4a 45%, #94592b 60%, #5e3213 100%); }
+
+/* 시크왕 1~3위: 세 줄 모두 같은 틀 (메달 칸 · 이름 · 횟수 오른쪽 정렬) */
+.qk-king .qk-label small { margin-left: 6px; font-size: 12px; font-weight: 600; color: #7a7f72; }
+.qk-rank { display: grid; gap: 7px; width: 56%; max-width: none; }
+.qk-rank li, .qk-rank .r1, .qk-rank .r2, .qk-rank .r3 { display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; grid-template-rows: auto; align-items: center; column-gap: 10px; margin: 0; padding: 0 14px 0 8px; height: 46px; border-radius: 12px; }
+.qk-rank .r1 { height: 58px; }
+.qk-rank .medal, .qk-rank .r1 .medal { grid-row: auto; justify-self: center; width: 28px; height: 28px; font-size: 13px; }
+.qk-rank .r1 .medal { width: 34px; height: 34px; font-size: 15px; }
+.qk-rank strong, .qk-rank .r1 strong, .qk-rank .r2 strong, .qk-rank .r3 strong { grid-column: 2; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.qk-rank .r1 strong { font-size: clamp(20px, 1.8vw, 24px); }
+.qk-rank .r2 strong, .qk-rank .r3 strong { font-size: 17px; }
+.qk-rank em, .qk-rank .r1 em { grid-column: 3; justify-self: end; font-size: 13.5px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.qk-rank em::before, .qk-rank .r1 em::before { content: none; }
+.qk-rank .r1 { background: linear-gradient(100deg, #fff8de, #f6e2a8); box-shadow: inset 0 0 0 1px rgba(201, 150, 46, .45), 0 4px 12px -8px rgba(150, 110, 20, .6); }
+.qk-rank .r2 { background: linear-gradient(100deg, #fafbfd, #dde2e8); box-shadow: inset 0 0 0 1px rgba(141, 149, 158, .4); }
+.qk-rank .r3 { background: linear-gradient(100deg, #fff1e4, #efcdb0); box-shadow: inset 0 0 0 1px rgba(176, 112, 63, .38); }
+.qk-spark.s1 { left: 26px; top: -7px; }
+.qk-spark.s2 { right: 8px; top: -5px; }
+@media (max-width: 1100px) and (min-width: 901px) { .qk-rank { width: 62%; } .qk-rank .r1 strong { font-size: 18px; } .qk-rank .r2 strong, .qk-rank .r3 strong { font-size: 15px; } }
+@media (max-width: 700px) { .qk-rank { width: 60%; gap: 6px; } .qk-rank li, .qk-rank .r1, .qk-rank .r2, .qk-rank .r3 { height: 40px; padding: 0 10px 0 6px; column-gap: 8px; grid-template-columns: 28px minmax(0, 1fr) auto; } .qk-rank .r1 { height: 50px; } .qk-rank .r1 strong { font-size: 19px; } .qk-rank .r2 strong, .qk-rank .r3 strong { font-size: 15px; } .qk-rank .medal { width: 24px; height: 24px; font-size: 12px; } .qk-rank .r1 .medal { width: 28px; height: 28px; } }
+/* 금·은·동 왕관 */
+.qk-rank .medal, .qk-rank .r1 .medal { width: 30px; height: 26px; border-radius: 0; background: none; box-shadow: none; text-shadow: none; filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .18)); }
+.qk-rank .r1 .medal { width: 36px; height: 31px; filter: drop-shadow(0 2px 3px rgba(150, 110, 20, .45)); }
+.qk-rank .medal svg { display: block; width: 100%; height: 100%; }
+@media (max-width: 700px) { .qk-rank .medal { width: 25px; height: 22px; } .qk-rank .r1 .medal { width: 30px; height: 26px; } }
+@media (max-width: 1100px) and (min-width: 901px) { .qk-king .qk-label small { display: none; } }
