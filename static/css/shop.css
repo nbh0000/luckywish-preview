@@ -1587,3 +1587,19 @@ body:has(.hero) .top-nav { padding-left: 0; margin-left: -14px; border-left: 0; 
 @media (max-width: 1100px) and (min-width: 701px) { .qk-art { width: 48%; } .qk-main { font-size: 22px; } .qk-sub { max-width: 52%; } }
 @media (max-width: 700px) { .qk-art { width: 50%; } .qk-main, .qk-sub { max-width: 54%; } }
 @media (max-width: 900px) and (min-width: 701px) { .quick { grid-template-columns: 1fr; gap: 10px; } .qk { min-height: 132px; } .qk-art { width: 42%; } .qk-main { font-size: 26px; } .qk-main, .qk-sub { max-width: 58%; } }
+/* 시크왕 칸: 1~3위를 칸 안에서 바로 */
+.qk-king { padding-bottom: clamp(16px, 1.6vw, 20px); }
+.qk-rank { list-style: none; margin: 0; padding: 0; display: grid; gap: 3px; max-width: 58%; }
+.qk-rank li { display: grid; grid-template-columns: 30px minmax(0, 1fr) auto; align-items: baseline; gap: 6px; }
+.qk-rank span { font-size: 12.5px; font-weight: 700; color: #5f665c; }
+.qk-rank strong { font-size: 15.5px; font-weight: 800; color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.qk-rank em { font-style: normal; font-size: 13px; font-weight: 600; color: #5f665c; font-variant-numeric: tabular-nums; }
+.qk-rank .r1 { margin-bottom: 3px; }
+.qk-rank .r1 span { color: #8a6d2c; }
+.qk-rank .r1 strong { font: 400 clamp(22px, 2vw, 26px)/1.2 var(--f-display); }
+@media (hover: hover) and (pointer: fine) { .qk-king:hover { transform: none; box-shadow: inset 0 0 0 1px rgba(38, 58, 45, .05); } .qk-king:hover .qk-art { transform: none; } }
+.qk-king:active { transform: none; }
+@media (max-width: 700px) { .qk-king { padding-bottom: 14px; } .qk-rank { max-width: 56%; } }
+.qk-rank li { grid-template-columns: 30px minmax(0, max-content) auto; justify-content: start; gap: 8px; }
+.qk-rank em::before { content: "시크릿 "; }
+@media (max-width: 1100px) { .qk-rank em::before { content: none; } }
