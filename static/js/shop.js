@@ -772,3 +772,12 @@
   });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) close(); });
 })();
+
+// 메인 머리줄: 내려가면 아래 선
+(function () {
+  var top = document.querySelector('header.top');
+  if (!top || !document.querySelector('.home-main')) return;
+  function onScroll() { top.classList.toggle('is-scrolled', window.scrollY > 4); }
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+})();
