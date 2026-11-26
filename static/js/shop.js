@@ -693,6 +693,13 @@
       Array.prototype.forEach.call(bar.querySelectorAll('[data-cat-kind]'), function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-cat-kind') === state.k ? 'true' : 'false'); });
       Array.prototype.forEach.call(bar.querySelectorAll('[data-cat-char]'), function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-cat-char') === state.c ? 'true' : 'false'); });
       if (empty) empty.hidden = shown > 0;
+      // 제목: 고른 친구(또는 종류) 이름, 아무것도 안 고르면 원래 제목
+      var title = bar.querySelector('[data-view-title="all"]');
+      if (title) {
+        if (!title.hasAttribute('data-default')) title.setAttribute('data-default', title.textContent);
+        var kb = state.k ? bar.querySelector('[data-cat-kind="' + state.k + '"]') : null;
+        title.textContent = state.c ? state.c : (kb ? kb.textContent : title.getAttribute('data-default'));
+      }
       if (push) {
         var h = [];
         if (state.c) h.push('c=' + encodeURIComponent(state.c));
