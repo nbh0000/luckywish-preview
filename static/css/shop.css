@@ -1980,3 +1980,50 @@ main.wrap { width: 100%; box-sizing: border-box; }
 @media (max-width: 899px) { .qq-deco { display: none; } }
 @media (max-width: 420px) { .qq-steps > span { height: 30px; padding: 0 9px 0 7px; font-size: 12.5px; gap: 4px; } .qq-steps i { font-size: 14px; } }
 @media (max-width: 420px) { .qq-emo { display: none; } }
+
+/* ===== 당첨자 페이지 꾸밈 (2026-11-27) ===== */
+.win-hero { position: relative; isolation: isolate; overflow: hidden; display: grid; justify-items: start; gap: 8px; margin-bottom: 18px; padding: clamp(22px, 3vw, 36px) clamp(20px, 3vw, 36px); min-height: clamp(180px, 18vw, 230px); align-content: center; border-radius: 16px; background: linear-gradient(100deg, #fde7dd 0%, #fad4c8 55%, #f7cbbd 100%); box-shadow: inset 0 0 0 1px rgba(200, 120, 100, .15), 0 20px 36px -28px rgba(160, 80, 60, .6); }
+.win-hero .wh-art { position: absolute; inset: 0 0 0 auto; z-index: -1; width: 52%; height: 100%; object-fit: cover; object-position: 100% 55%; -webkit-mask-image: linear-gradient(90deg, transparent, #000 30%); mask-image: linear-gradient(90deg, transparent, #000 30%); }
+.wh-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 800; color: #b4513a; }
+.win-hero h1 { margin: 0; max-width: 62%; color: #4a2a22; }
+.win-hero .wh-sum { margin: 0; font-size: 15px; font-weight: 700; color: #6d4135; }
+.wh-sum b { font: 400 22px/1 var(--f-display); color: #c2412c; margin-right: 1px; }
+.win-hero p { max-width: 58%; color: #8a6157; font-size: 14px; }
+.wh-deco i { position: absolute; z-index: -1; font-style: normal; animation: qq-float 5s ease-in-out infinite; filter: drop-shadow(0 4px 8px rgba(160, 80, 60, .25)); }
+.wh-deco i:nth-child(1) { left: 44%; top: 18%; font-size: 30px; }
+.wh-deco i:nth-child(2) { left: 52%; top: 62%; font-size: 20px; animation-delay: -1.6s; }
+.wh-deco i:nth-child(3) { left: 38%; top: 66%; font-size: 22px; animation-delay: -3s; }
+@media (max-width: 699px) { .win-hero .wh-art { width: 60%; opacity: .5; } .win-hero h1, .win-hero p { max-width: 100%; } .wh-deco { display: none; } }
+
+.day-chip[aria-current="date"] { background: #0a351d; box-shadow: 0 10px 20px -14px rgba(10, 53, 29, .9); }
+.day-chip[aria-current="date"] span { color: #e9c56b; }
+@media (hover: hover) and (pointer: fine) { .day-chip:not([aria-current]):hover { box-shadow: inset 0 0 0 1px var(--ink); } }
+
+.win-groups { display: block; columns: 2 340px; column-gap: 14px; }
+.win-group { break-inside: avoid; margin-bottom: 14px; padding: 18px; border-radius: 16px; background: #fff; box-shadow: inset 0 0 0 1px var(--line), 0 14px 28px -24px rgba(38, 58, 45, .5); }
+.win-group header { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 12px; margin-bottom: 14px; }
+.wg-emo { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; background: #f6eee3; font-size: 22px; }
+.kind-chat .wg-emo { background: #e6efdf; }
+.kind-buyer .wg-emo { background: #fbe3da; }
+.kind-gacha .wg-emo { background: #f7ecc9; }
+.wg-t { display: grid; gap: 2px; min-width: 0; }
+.win-group h2 { font: 400 18px/1.25 var(--f-display); letter-spacing: -0.03em; overflow-wrap: anywhere; }
+.wg-t > span { font-size: 12.5px; color: var(--muted); }
+.wg-n { font-style: normal; padding: 5px 9px; border-radius: 8px; background: #0a351d; color: #f6eccd; font-size: 13px; font-weight: 800; }
+.win-group .win-names { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; }
+.win-group .win-names li { display: grid; grid-template-columns: 26px minmax(0, 1fr) auto; align-items: center; gap: 10px; padding: 11px 2px; border-radius: 0; background: none; border-top: 1px dashed var(--line); }
+.win-group .win-names li:first-child { border-top: 0; }
+.wn-no { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 8px; background: #f3eee5; color: #8a7d6b; font: 700 12px/1 var(--f-display); font-style: normal; }
+.win-group .win-names b { font-size: 15.5px; font-weight: 800; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.win-group .wn-prize { display: inline-flex; align-items: center; gap: 5px; max-width: 46vw; padding: 5px 9px; border-radius: 8px; background: #fbefe9; color: #9a4a37; font-size: 12.5px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.kind-chat .wn-prize { background: #eef4ea; color: #2f6b3f; }
+.kind-gacha .wn-prize { background: #fbf3da; color: #8a6a17; }
+@media (prefers-reduced-motion: reduce) { .wh-deco i { animation: none; } }
+.win-group header .wg-emo { font-size: 24px; color: inherit; }
+.win-group header .wg-t { color: var(--ink); font-size: inherit; }
+.win-group header .wg-t > span { font-size: 12.5px; color: var(--muted); }
+.win-group.kind-gacha .win-names li { background: none; }
+.wh-deco i:nth-child(1) { left: auto; right: 44%; top: 12%; }
+.wh-deco i:nth-child(2) { left: auto; right: 36%; top: 74%; }
+.wh-deco i:nth-child(3) { left: auto; right: 48%; top: 70%; }
+@media (max-width: 1100px) { .wh-deco { display: none; } }
