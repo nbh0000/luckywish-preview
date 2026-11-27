@@ -1385,7 +1385,7 @@ header.top { background: color-mix(in srgb, #fbf8f2 90%, transparent); box-shado
 .home-main .section-title { font-size: clamp(23px, 2.4vw, 30px); color: var(--ink); margin: clamp(30px, 4vw, 46px) 2px 14px; }
 
 /* 어떤 친구를 찾으세요? */
-.friends .section-title::after { content: ""; display: inline-block; width: 64px; height: 18px; margin-left: 10px; background: url(/luckywish-preview/static/img/clover-leaf.png) right center / 18px no-repeat, linear-gradient(var(--peach-d), var(--peach-d)) left 60% / 46px 1.5px no-repeat; opacity: 0.9; }
+.friends .section-title::after { content: ""; display: inline-block; width: 64px; height: 18px; margin-left: 10px; background: url(/luckywish-preview/static/img/clover-lw.png) right center / 18px no-repeat, linear-gradient(var(--peach-d), var(--peach-d)) left 60% / 46px 1.5px no-repeat; opacity: 0.9; }
 .friends-rail { gap: clamp(8px, 1.4vw, 14px); padding-block: 4px 6px; }
 .friend { -webkit-appearance: none; appearance: none; flex: none; display: grid; justify-items: center; gap: 8px; width: 78px; padding: 0; border: 0; background: none; color: var(--ink); font: inherit; cursor: pointer; touch-action: manipulation; scroll-snap-align: start; }
 .friend-av { display: block; width: 72px; height: 72px; border-radius: 50%; overflow: hidden; background: #efe7db; box-shadow: inset 0 0 0 1px rgba(38, 58, 45, 0.06); transition: box-shadow .2s, transform .2s; }
@@ -1766,7 +1766,7 @@ body:has(.hero) .top:not(.is-solid) .top-nav a[aria-current="page"]::after { bac
 .photo-head { align-items: end; margin-bottom: clamp(16px, 2.2vw, 24px); padding-bottom: clamp(14px, 2vw, 20px); border-bottom: 1px solid rgba(233, 197, 107, 0.3); }
 .photo-title { display: grid; gap: 4px; min-width: 0; }
 .photo-head h2 { display: flex; align-items: center; gap: 10px; color: #f4efe2; font-size: clamp(25px, 2.8vw, 34px); }
-.photo-head h2::before { content: ""; flex: none; width: 1em; height: 1em; background: url(/luckywish-preview/static/img/clover-leaf.png) center / contain no-repeat; filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35)); }
+.photo-head h2::before { content: ""; flex: none; width: 1em; height: 1em; background: url(/luckywish-preview/static/img/clover-lw.png) center / contain no-repeat; filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35)); }
 .photo-title p { margin: 0; font-size: 14px; font-weight: 600; color: #b9cdbd; }
 .photo-head a { flex: none; display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px; border-radius: 10px; border: 1px solid rgba(233, 197, 107, 0.55); color: #e9c56b; font-size: 14px; text-decoration: none; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
 .photo-head a:active { transform: scale(0.97); }
@@ -1842,7 +1842,7 @@ body:has(.hero) .top .menu-btn { width: 36px; }
 @media (prefers-reduced-motion: reduce) { .hero-logo img { animation: none; } .hero-spark { animation: none; opacity: .7; } }
 
 /* ===== 섹션 제목: 줄 + 클로버 포인트 (모든 메인 섹션 같게) ===== */
-.home-main .pick-head .section-title::after, .photo-head h2::after { content: ""; display: inline-block; vertical-align: middle; width: 64px; height: 18px; margin-left: 10px; background: url(/luckywish-preview/static/img/clover.png) right center / 18px no-repeat, linear-gradient(var(--peach-d), var(--peach-d)) left 60% / 46px 1.5px no-repeat; opacity: .9; }
+.home-main .pick-head .section-title::after, .photo-head h2::after { content: ""; display: inline-block; vertical-align: middle; width: 64px; height: 18px; margin-left: 10px; background: url(/luckywish-preview/static/img/clover-lw.png) right center / 18px no-repeat, linear-gradient(var(--peach-d), var(--peach-d)) left 60% / 46px 1.5px no-repeat; opacity: .9; }
 .photo-head h2 { display: flex; align-items: center; font-size: clamp(23px, 2.4vw, 30px); }
 .home-main .pick-head .section-title { display: flex; align-items: center; }
 .pick-title p { border-left: 0; padding-left: 0; }
@@ -2027,3 +2027,213 @@ main.wrap { width: 100%; box-sizing: border-box; }
 .wh-deco i:nth-child(2) { left: auto; right: 36%; top: 74%; }
 .wh-deco i:nth-child(3) { left: auto; right: 48%; top: 70%; }
 @media (max-width: 1100px) { .wh-deco { display: none; } }
+
+/* ===== 리브랜딩: 새 로고 톤(세이지·아이보리·금색)으로 초록 계열 일괄 변경 (2026-11-27, 자동 생성) ===== */
+:root { --night: #546644; --night-2: #5b6e4a; --pink: #dee8d5; --pink-d: #5f7749; --pink-dd: #627850; --pink-l: #ebf1e5; --pink-ll: #f3f7ef; --bg: #f1f4ef; --ink: #526443; --line: #dfe5da; --ok: #5f7749; --ok-l: #ebf1e5; --shadow: 0 14px 32px -20px rgba(84, 102, 68, 0.45); --shadow-soft: 0 6px 16px -10px rgba(84, 102, 68, 0.38); --puffy: inset 0 -2px 0 rgba(84, 102, 68, 0.12); }
+.live-pill { color: #b9bfb4; }
+.thumb .ph { text-shadow: 0 3px 8px rgba(95, 119, 73, 0.35); }
+.soldout .thumb::after { background: rgba(75, 91, 61, 0.55); }
+.soldout .add-dot { background: #e8ede3; color: #b7bdb1; }
+.review-file-button:hover { background: #fbfcfa; }
+.btn.google { box-shadow: inset 0 0 0 1.5px #e0e6da; }
+.sheet-backdrop { background: rgba(75, 91, 61, 0.45); }
+.sheet-grab { background: #dce4d5; }
+.chip.gray { background: #eff3ec; }
+.gallery-nav { background: rgba(75, 91, 61, .72); }
+.gallery-nav:hover { background: rgba(75, 91, 61, .9); }
+.expected-shipping { background: #f0f4eb; color: #6a8156; }
+.cart-line .nobox { color: var(--ink, #4e5f40); }
+.hint { background: #f3f6f1; }
+.merge-option-body { background: #f2f6ef; }
+.choice .tile { background: #f2f6ef; }
+.input, .field input, .field textarea, .field select { background: #f2f6ef; }
+.bank-card .k { color: #b9bfb4; }
+.bank-mini .k { color: #b9bfb4; }
+.review-written { background: #f2f6ef; }
+.meter { background: #eaf0e5; }
+.tabs { background: #eff3ec; }
+.auth-hero p { color: #c9d0c3; }
+.policy p { color: #68715f; }
+.notice-modal { background: rgba(75, 91, 61, 0.62); }
+.notice-modal-card { box-shadow: 0 18px 50px -12px rgba(75, 91, 61, 0.5); }
+.pay-handoff .box { box-shadow: 0 18px 40px -18px rgba(95, 119, 73, .45); }
+.pay-handoff .bar i { background: var(--pink-d, #5f7749); }
+.postcode-layer { background: rgba(75, 91, 61, 0.62); }
+.postcode-card { box-shadow: 0 18px 50px -12px rgba(75, 91, 61, 0.5); }
+.q-now { box-shadow: 0 18px 36px -22px rgba(75, 91, 61, 0.75); }
+.q-now .q-items { color: #e2e8dc; }
+.q-now-time { color: #b9bfb4; }
+.q-now.is-mine { box-shadow: inset 0 0 0 2px var(--pink), 0 18px 36px -22px rgba(75, 91, 61, 0.75); }
+body { background: linear-gradient(rgba(241, 244, 239, 0.86), rgba(241, 244, 239, 0.86)), url('/luckywish-preview/static/img/surface.webp') center / cover fixed var(--bg); }
+header.top { background: color-mix(in srgb, #fafbf9 86%, transparent); }
+.live-pill { background: #e7ebe3; }
+@media (hover: hover) and (pointer: fine) { .top-nav a:hover { background: rgba(84, 102, 68, 0.05); } }
+.sub-tabs { background: color-mix(in srgb, #fafbf9 90%, transparent); }
+@media (hover: hover) and (pointer: fine) { .btn.pink:hover { background: #637058; } }
+.hero { background: radial-gradient(55% 80% at 50% 45%, rgba(108, 137, 84, 0.42), rgba(108, 137, 84, 0) 70%), #506141; box-shadow: 0 18px 40px -28px rgba(80, 97, 65, 0.8); }
+.hero-facts span { color: #b7c6a9; }
+.hero-facts em { color: #d7e0cf; }
+.hero-king li i { color: #b7c6a9; }
+.hero-king li em { color: #b7c6a9; }
+.cat-chips-wrap::before { background: linear-gradient(90deg, var(--bg), rgba(241, 244, 239,0)); }
+.cat-chips-wrap::after { background: linear-gradient(270deg, var(--bg), rgba(241, 244, 239,0)); }
+.card { box-shadow: 0 1px 0 rgba(84, 102, 68, 0.04), var(--shadow); }
+.thumb { background: #eff2ed; }
+@media (hover: hover) and (pointer: fine) { .card:hover { box-shadow: 0 24px 40px -26px rgba(84, 102, 68, 0.55); } }
+.win-strip-names span { color: #c6cdbf; }
+.photo-tile { background: #e5e9e1; }
+.photo-cap { background: linear-gradient(transparent, rgba(75, 91, 61, 0.72)); }
+.day-chip[aria-current="date"] span { color: #d3dacd; }
+.rv-more { background: rgba(75, 91, 61, 0.7); }
+.foot { background: #e7ebe3; }
+.banner:not(.off) { background: #ebf1e5; box-shadow: inset 0 0 0 1px #d5e2ca; }
+.banner:not(.off)::before { box-shadow: 0 0 0 4px rgba(95, 119, 73, 0.18); }
+.card { border: 1px solid #e1e6dc; box-shadow: 0 6px 16px -12px rgba(84, 102, 68, 0.28); }
+@media (hover: hover) and (pointer: fine) { .card:hover { border-color: #cad6c0; box-shadow: 0 14px 28px -18px rgba(84, 102, 68, 0.4); } }
+.photo-cap { background: linear-gradient(rgba(75, 91, 61, 0), rgba(75, 91, 61, 0.78) 55%); }
+.hero-facts a { background: rgba(80, 97, 65, 0.88); }
+@media (hover: hover) and (pointer: fine) { .hero-facts a:hover { background: rgba(85, 103, 69, 0.95); } }
+:root { --ink: #596c48; --sage: #dee7d6; }
+@media (hover: hover) and (pointer: fine) { .top .icon-btn:hover { background: rgba(89, 108, 72, 0.06); } }
+.friend-av { box-shadow: inset 0 0 0 1px rgba(89, 108, 72, 0.06); }
+.kind-tabs button[aria-pressed="true"] { background: rgba(89, 108, 72, 0.07); }
+.view-seg { background: rgba(89, 108, 72, 0.07); }
+.home-main .thumb { box-shadow: inset 0 0 0 1px rgba(89, 108, 72, 0.05); }
+.home-main .hall { --hall-ink: #60744e; }
+.home-main .hall-eyebrow { color: #5d6753; }
+.home-main .hall-eyebrow::after { background: #b6c0ad; }
+.home-main .hall-rank li { border-top: 1px solid rgba(96, 116, 78, .14); }
+.home-main .hall-rank li:last-child { border-bottom: 1px solid rgba(96, 116, 78, .14); }
+.home-main .hall-pos { color: #66705c; }
+.home-main .hall-rank em { color: #5d6753; }
+.home-main .hall-empty { color: #5d6753; }
+header.top { background: #506141; }
+.top .icon-btn .badge { color: #506141; }
+.live-pill.on { color: #506141; }
+body:has(.hero) .top.is-solid { background: rgba(80, 97, 65, 0.94); }
+@supports (backdrop-filter: blur(1px)) { body:has(.hero) .top.is-solid { background: rgba(80, 97, 65, 0.95); } }
+.qk-queue.is-live { --qk-bg: #e1ebd9; --qk-ico: #5d7548; }
+.qk-queue.is-live .qk-label::after { background: #5d7548; }
+@media (hover: hover) and (pointer: fine) { .qk:hover { box-shadow: 0 10px 24px -16px rgba(89, 108, 72, .45); } }
+.qk { box-shadow: inset 0 0 0 1px rgba(89, 108, 72, .05); }
+@media (hover: hover) and (pointer: fine) { .qk-king:hover { box-shadow: inset 0 0 0 1px rgba(89, 108, 72, .05); } }
+.hero { background:
+    radial-gradient(38% 70% at 50% 62%, rgba(233, 197, 107, 0.16), rgba(233, 197, 107, 0) 70%),
+    radial-gradient(70% 90% at 50% 55%, rgba(108, 137, 84, 0.5), rgba(108, 137, 84, 0) 72%),
+    linear-gradient(180deg, #4d5e3e 0, #506141 var(--top-h, 64px), #546644 100%); box-shadow: inset 0 0 0 1px rgba(233, 197, 107, 0.22), 0 24px 48px -32px rgba(80, 97, 65, 0.9); }
+.home-main { --sec-line: rgba(89, 108, 72, 0.16); }
+.photo-wall { background:
+    radial-gradient(60% 80% at 50% 0%, rgba(233, 197, 107, 0.14), rgba(233, 197, 107, 0) 70%),
+    radial-gradient(80% 100% at 50% 40%, rgba(108, 137, 84, 0.45), rgba(108, 137, 84, 0) 75%),
+    #506141; box-shadow: inset 0 0 0 1px rgba(233, 197, 107, 0.22), 0 24px 48px -34px rgba(80, 97, 65, 0.9); }
+.photo-title p { color: #c2cdb9; }
+@media (hover: hover) and (pointer: fine) { .photo-head a:hover { color: #506141; } }
+.photo-tile { background: #576a46; }
+.photo-empty { color: #d7e0cf; }
+body:has(.hero) .top .user-btn, body:has(.hero) .live-pill, body:has(.hero) .top .menu-btn { background: rgba(73, 89, 59, .42); }
+body:has(.hero) .live-pill.on { color: #506141; }
+@media (hover: hover) and (pointer: fine) { body:has(.hero) .top .user-btn:hover { background: rgba(73, 89, 59, .6); } }
+.site-menu-bg { background: rgba(72, 87, 58, .45); }
+.site-menu-panel { background: radial-gradient(120% 60% at 100% 0%, #5b6e49, #506141 60%); }
+.site-menu-account a:first-child { color: #506141; }
+.hero { box-shadow: inset 0 0 0 1px rgba(233, 197, 107, .32), 0 22px 44px -28px rgba(80, 97, 65, .75); }
+.hero-glow { background: radial-gradient(38% 70% at 50% 52%, rgba(171, 192, 153, .38), rgba(113, 143, 88, .12) 55%, transparent 75%), radial-gradient(60% 40% at 50% 100%, rgba(233, 197, 107, .16), transparent 70%); }
+.hero { background: radial-gradient(38% 70% at 50% 55%, rgba(233, 197, 107, .14), rgba(233, 197, 107, 0) 70%), radial-gradient(70% 90% at 50% 50%, rgba(108, 137, 84, .5), rgba(108, 137, 84, 0) 72%), linear-gradient(180deg, #526342, #506141 60%, #546644); }
+body:has(.home-main) .brand-logo { filter: drop-shadow(0 4px 8px rgba(80, 97, 65, .18)); }
+body:has(.home-main) .live-pill.on { background: #506141; }
+.qq { background: radial-gradient(70% 120% at 85% 40%, #61764e 0%, #556745 45%, #506141 80%); box-shadow: inset 0 0 0 1px rgba(233, 197, 107, .28), 0 22px 40px -26px rgba(80, 97, 65, .8); }
+.qq-now em { color: #506141; }
+.qq-next li { background: rgba(73, 89, 59, .5); }
+.qq-next li.is-mine { color: #506141; }
+.qq-next li.is-mine b { background: rgba(80, 97, 65, .14); color: #506141; }
+.qq-go { color: #506141; }
+@media (hover: hover) and (pointer: fine) { .qq:hover { box-shadow: inset 0 0 0 1px rgba(233, 197, 107, .45), 0 28px 48px -26px rgba(80, 97, 65, .9); } }
+.line-tabs button[aria-pressed="true"] { background: #506141; box-shadow: 0 12px 24px -16px rgba(80, 97, 65, .8); }
+.qq { background: #546644; }
+.qq::after { background: linear-gradient(90deg, rgba(80, 97, 65, .55), rgba(80, 97, 65, 0) 55%); }
+@media (max-width: 699px) { .qq::after { background: linear-gradient(90deg, rgba(80, 97, 65, .92) 30%, rgba(80, 97, 65, .2) 85%); } }
+@media (max-width: 699px) { .qq::after { background: linear-gradient(90deg, rgba(80, 97, 65, .6) 40%, rgba(80, 97, 65, 0) 90%); } }
+@media (max-width: 699px) { .qq-next li { background: rgba(73, 89, 59, .72); } }
+.qq::after { background: radial-gradient(42% 90% at 18% 50%, rgba(233, 197, 107, .16), transparent 70%), linear-gradient(90deg, rgba(80, 97, 65, .55), rgba(80, 97, 65, 0) 55%); }
+.qq-steps > span { background: rgba(73, 89, 59, .45); }
+.day-chip[aria-current="date"] { background: #506141; box-shadow: 0 10px 20px -14px rgba(80, 97, 65, .9); }
+.win-group { box-shadow: inset 0 0 0 1px var(--line), 0 14px 28px -24px rgba(89, 108, 72, .5); }
+.kind-chat .wg-emo { background: #e7eee0; }
+.wg-n { background: #506141; }
+.kind-chat .wn-prize { background: #eff4ea; color: #697f55; }
+
+@font-face { font-family: 'LW Serif'; src: url(/luckywish-preview/static/fonts/GowunBatang-Bold.woff2) format('woff2'); font-weight: 100 900; font-display: swap; }
+/* ===== 리브랜딩 기본: 아이보리 바탕 · 세이지 클로버 · 광택 금색 · 세리프 제목 (2026-11-27) ===== */
+:root {
+  --bg: #fbf7ec; --cream: #fffaf0; --card: #fffdf8;
+  --ink: #3b4733; --muted: #7a8070; --line: #ece4d0;
+  --sage: #a9bc9b; --sage-l: #e6ecdc; --sage-d: #5c7350; --sage-dd: #4a5f40;
+  --gold: #d3a13d; --gold-d: #a87a22; --gold-l: #f7ecca;
+  --gold-grad: linear-gradient(180deg, #f8e09a 0%, #e3b250 46%, #c48d2b 100%);
+  --night: #4f6545; --night-2: #5e7553;
+  --f-display: 'LW Serif', 'Gmarket Sans', serif;
+  --shadow: 0 16px 34px -22px rgba(120, 96, 40, .45);
+  --shadow-soft: 0 8px 18px -12px rgba(120, 96, 40, .35);
+}
+body { background: var(--bg); color: var(--ink); }
+body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; background: url(/luckywish-preview/static/img/bg-wide.webp) center / cover no-repeat; opacity: .9; }
+@media (max-width: 699px) { body::before { background-image: url(/luckywish-preview/static/img/bg-phone.webp); } }
+h1, h2, .page-title h1 { font-family: var(--f-display); font-weight: 700; letter-spacing: -0.02em; }
+
+/* 머리줄 로고 */
+.brand-logo { height: clamp(30px, 3.4vw, 42px); width: auto; filter: drop-shadow(0 3px 6px rgba(150, 110, 30, .18)); }
+body:has(.home-main) .brand-logo { height: clamp(36px, 4.2vw, 52px); filter: drop-shadow(0 4px 8px rgba(150, 110, 30, .2)); }
+header.top, body:has(.home-main) header.top { background: color-mix(in srgb, var(--bg) 86%, transparent); }
+.site-menu-head img { height: 34px; width: auto; }
+body:has(.home-main) .live-pill.on { background: var(--sage-d); color: #fffaf0; }
+
+/* ===== 리브랜딩: 순서표 띠 아이보리 + 금색 (2026-11-27) ===== */
+:root { --bg: #fbf2e4; }
+.qq { --qq-gold: #c9932f; background: #fbf1e2; color: var(--ink); box-shadow: inset 0 0 0 1px rgba(201, 147, 47, .32), 0 24px 44px -30px rgba(150, 105, 30, .55); }
+.qq::before { inset: 8px; box-shadow: inset 0 0 0 1px rgba(201, 147, 47, .22); }
+.qq::after, .qq::after { background: linear-gradient(90deg, rgba(251, 242, 228, .92) 0%, rgba(251, 242, 228, .55) 38%, rgba(251, 242, 228, 0) 58%); }
+.qq-badge, .qq:not(.is-live) .qq-badge { color: var(--gold-d); }
+.qq-now small { color: var(--muted); }
+.qq-now strong { color: #3d4a33; text-shadow: none; }
+.qq-now em { background: var(--sage-d); color: #fffaf0; }
+.qq-next li { background: rgba(255, 253, 247, .82); color: var(--ink); box-shadow: inset 0 0 0 1px rgba(201, 147, 47, .3); }
+.qq-next b { background: var(--gold-l); color: var(--gold-d); }
+.qq-next li.is-mine { background: var(--sage-d); color: #fffaf0; }
+.qq-next li.is-mine b { background: rgba(255, 255, 255, .18); color: #fffaf0; }
+.qq-stats { color: var(--muted); }
+.qq-stats b { color: var(--gold-d); }
+.qq-steps > span { background: rgba(255, 253, 247, .85); color: var(--ink); box-shadow: inset 0 0 0 1px rgba(201, 147, 47, .3); }
+.qq-steps > b { color: var(--gold); }
+.qq-go { background: var(--gold-grad); color: #4a3410; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .55), 0 10px 20px -12px rgba(150, 100, 20, .8); text-shadow: 0 1px 0 rgba(255, 240, 200, .6); }
+.qq-deco i { filter: drop-shadow(0 6px 10px rgba(150, 105, 30, .25)); }
+.qq-deco .d2, .qq-deco .d4, .qq-deco .d6, .qq-deco .d7 { display: none; }
+.qq-art { object-position: 100% 50%; }
+@media (hover: hover) and (pointer: fine) { .qq:hover { box-shadow: inset 0 0 0 1px rgba(201, 147, 47, .5), 0 30px 50px -30px rgba(150, 105, 30, .7); } }
+.qq:focus-visible { outline-color: var(--sage-d); }
+@media (max-width: 699px) {
+  .qq-pic { width: 70%; }
+  .qq::after { background: linear-gradient(90deg, rgba(251, 242, 228, .96) 35%, rgba(251, 242, 228, .3) 80%); }
+  .qq-next li { background: rgba(255, 253, 247, .92); }
+}
+@media (max-width: 699px) {
+  .qq { grid-template-areas: "pic" "badge" "now" "next" "stats" "go"; padding-top: 0; }
+  .qq-pic { position: relative; inset: auto; z-index: 0; grid-area: pic; width: auto; height: 168px; margin: 0 calc(-1 * clamp(20px, 2.6vw, 36px)) 6px; -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent); mask-image: linear-gradient(180deg, #000 70%, transparent); }
+  .qq-pic .qq-art { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 1; object-fit: cover; object-position: 50% 55%; }
+  .qq::after { display: none; }
+}
+/* 리브랜딩: 머리줄은 모든 페이지에서 밝게, 바닥글 아이보리 */
+header.top { color: var(--ink); box-shadow: 0 1px 0 rgba(201, 147, 47, .18); }
+.top-nav a { color: #6f7765; }
+.top-nav a[aria-current="page"] { color: var(--ink); }
+.top-nav a[aria-current="page"]::after, body:has(.hero) .top:not(.is-solid) .top-nav a[aria-current="page"]::after { background: var(--gold-grad); height: 2.5px; }
+@media (hover: hover) and (pointer: fine) { .top-nav a:hover { color: var(--ink); background: rgba(201, 147, 47, .08); } .top .icon-btn:hover { background: rgba(201, 147, 47, .1); } }
+.top .icon-btn { color: var(--ink); }
+.live-pill { background: #fff; color: #7a8070; box-shadow: inset 0 0 0 1px var(--line); }
+.live-pill.on { background: var(--sage-d); color: #fffaf0; box-shadow: none; }
+.foot { background: color-mix(in srgb, #f6e8d2 80%, transparent); color: var(--muted); box-shadow: inset 0 1px 0 rgba(201, 147, 47, .25); }
+.foot a { color: var(--ink); }
+header.top, body:has(.hero) .top { border-radius: 0; }
+.photo-wall { background: radial-gradient(80% 120% at 90% 0%, #6b8360 0%, #56704c 50%, #4a6142 100%); box-shadow: inset 0 0 0 1px rgba(233, 197, 107, .35), 0 26px 48px -32px rgba(74, 97, 66, .8); }
+.photo-wall::after { background-image: url(/luckywish-preview/static/img/clover-lw.png); background-size: 92px auto; background-position: right 22px top 18px; opacity: .55; -webkit-mask-image: none; mask-image: none; height: 140px; aspect-ratio: auto; width: 140px; transform: rotate(14deg); }
+.photo-head a { color: #f7e3a6; box-shadow: inset 0 0 0 1px rgba(247, 227, 166, .55); }
+.photo-wall::after { display: none; }
