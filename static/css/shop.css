@@ -2267,3 +2267,55 @@ body:has(.home-main) .brand-logo { height: clamp(48px, 5.4vw, 66px); }
   .line-tabs small { font-size: 12px; }
   .line-tabs button[aria-pressed="true"]::after { top: 8px; right: 8px; width: 17px; height: 17px; font-size: 10px; }
 }
+
+/* 머리줄 아래 경계를 딱 자르지 않고 배경으로 부드럽게 풀어지게 (2026-11-28) */
+header.top, body:has(.home-main) header.top, body:has(.home-main) header.top.is-scrolled, body:has(.hero) .top { background: transparent; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; isolation: isolate; }
+header.top::before { content: ""; position: absolute; inset: 0 0 -34px; z-index: -1; pointer-events: none; background: linear-gradient(180deg, rgba(251, 247, 236, .94) 0%, rgba(251, 247, 236, .86) 62%, rgba(251, 247, 236, 0) 100%); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent); mask-image: linear-gradient(180deg, #000 60%, transparent); }
+
+/* 제목 글꼴: 세리프(궁서 느낌) 대신 본문 글꼴 Pretendard 굵은체로 통일 (2026-11-28, 자동 생성) */
+:root { --f-display: 'Pretendard Variable', Pretendard, -apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', system-ui, sans-serif; }
+.brand { font-weight: 800; letter-spacing: -0.03em; }
+.section-title { font-weight: 800; letter-spacing: -0.03em; }
+.thumb .ph { font-weight: 800; letter-spacing: -0.03em; }
+.price { font-weight: 800; letter-spacing: -0.03em; }
+.soldout .thumb::after { font-weight: 800; letter-spacing: -0.03em; }
+.empty .big { font-weight: 800; letter-spacing: -0.03em; }
+.review-section-head h2 { font-weight: 800; letter-spacing: -0.03em; }
+.btn.big { font-weight: 800; letter-spacing: -0.03em; }
+.sheet-head h2 { font-weight: 800; letter-spacing: -0.03em; }
+.p-price { font-weight: 800; letter-spacing: -0.03em; }
+.detail-total strong { font-weight: 800; letter-spacing: -0.03em; }
+.detail-description h2 { font-weight: 800; letter-spacing: -0.03em; }
+.sum-row.total .v { font-weight: 800; letter-spacing: -0.03em; }
+.page-title { font-weight: 800; letter-spacing: -0.03em; }
+.bank-card .amount { font-weight: 800; letter-spacing: -0.03em; }
+.done-hero .big { font-weight: 800; letter-spacing: -0.03em; }
+.keep-amount { font-weight: 800; letter-spacing: -0.03em; }
+.menu a .v { font-weight: 800; letter-spacing: -0.03em; }
+.queue-head h1 { font-weight: 800; letter-spacing: -0.03em; }
+.q-now-name { font-weight: 800; letter-spacing: -0.03em; }
+.q-now-empty .q-empty-title { font-weight: 800; letter-spacing: -0.03em; }
+.q-next-name { font-weight: 800; letter-spacing: -0.03em; }
+.q-list-head h2 { font-weight: 800; letter-spacing: -0.03em; }
+.brand-word { font-weight: 800; letter-spacing: -0.03em; }
+.hero-facts strong { font-weight: 800; letter-spacing: -0.03em; }
+.photo-head h2, .king-head h2 { font-weight: 800; letter-spacing: -0.03em; }
+.record-head h1 { font-weight: 800; letter-spacing: -0.03em; }
+.rank-row.r1 .rank-who b { font-weight: 800; letter-spacing: -0.03em; }
+.foot .brand { font-weight: 800; letter-spacing: -0.03em; }
+.home-main .hall-title { font-weight: 800; letter-spacing: -0.03em; }
+.qk-main { font-weight: 800; letter-spacing: -0.03em; }
+.qk-rank .r1 strong { font-weight: 800; letter-spacing: -0.03em; }
+.qk-rank .r1 strong { font-weight: 800; letter-spacing: -0.03em; }
+.qk-rank .r2 strong, .qk-rank .r3 strong { font-weight: 800; letter-spacing: -0.03em; }
+.site-menu-links a { font-weight: 800; letter-spacing: -0.03em; }
+.qq-badge { font-weight: 800; letter-spacing: -0.03em; }
+.qq-now strong { font-weight: 800; letter-spacing: -0.03em; }
+.qq-next b { font-weight: 800; letter-spacing: -0.03em; }
+.qq-stats b { font-weight: 800; letter-spacing: -0.03em; }
+.line-tabs .lt-name { font-weight: 800; letter-spacing: -0.03em; }
+.wh-sum b { font-weight: 800; letter-spacing: -0.03em; }
+.win-group h2 { font-weight: 800; letter-spacing: -0.03em; }
+.wn-no { font-weight: 800; letter-spacing: -0.03em; }
+h1, h2, .page-title h1 { font-weight: 800; letter-spacing: -0.03em; }
+h1, h2, .page-title h1 { font-family: var(--f-display); font-weight: 800; letter-spacing: -0.03em; }
