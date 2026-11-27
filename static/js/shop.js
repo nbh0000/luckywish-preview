@@ -682,35 +682,43 @@
     if (!bar) return;
     var grid = document.querySelector('[data-view-grid="live"]');
     var empty = bar.querySelector('[data-cat-empty]');
-    var state = { k: '', c: '' };
+    var state = { k: '', c: '', l: '' };
     function apply(push) {
-      var shown = 0;
+      var shown = 0, per = {};
       Array.prototype.forEach.call(grid.querySelectorAll('[data-product]'), function (card) {
-        var ok = (!state.k || card.getAttribute('data-kind') === state.k) && (!state.c || card.getAttribute('data-char') === state.c);
+        var inLine = !state.l || card.getAttribute('data-new') === '1';
+        var inKind = !state.k || card.getAttribute('data-kind') === state.k;
+        if (inLine && inKind) { var ch = card.getAttribute('data-char') || ''; per[ch] = (per[ch] || 0) + 1; per[''] = (per[''] || 0) + 1; }
+        var ok = inLine && inKind && (!state.c || card.getAttribute('data-char') === state.c);
         card.hidden = !ok;
         if (ok) shown++;
       });
       Array.prototype.forEach.call(bar.querySelectorAll('[data-cat-kind]'), function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-cat-kind') === state.k ? 'true' : 'false'); });
       Array.prototype.forEach.call(bar.querySelectorAll('[data-cat-char]'), function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-cat-char') === state.c ? 'true' : 'false'); });
-      if (empty) empty.hidden = shown > 0;
+      Array.prototype.forEach.call(bar.querySelectorAll('[data-cat-line]'), function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-cat-line') === state.l ? 'true' : 'false'); });
+      // 친구 칸: 지금 대분류·종류에 상품이 없는 친구는 흐리게
+      Array.prototype.forEach.call(bar.querySelectorAll('.friend[data-cat-char]'), function (b) { b.classList.toggle('is-empty', !per[b.getAttribute('data-cat-char')]); });
+      if (empty) { empty.hidden = shown > 0; empty.textContent = state.l && !state.c ? '새로 들어온 신상이 곧 올라와요. 라인업에서 모든 친구를 볼 수 있어요.' : '이 친구는 아직 준비 중이에요. 다른 친구를 골라 보세요.'; }
       // 제목: 고른 친구(또는 종류) 이름, 아무것도 안 고르면 원래 제목
       var title = bar.querySelector('[data-view-title="all"]');
       if (title) {
         if (!title.hasAttribute('data-default')) title.setAttribute('data-default', title.textContent);
         var kb = state.k ? bar.querySelector('[data-cat-kind="' + state.k + '"]') : null;
-        title.textContent = state.c ? state.c : (kb ? kb.textContent : title.getAttribute('data-default'));
+        title.textContent = state.c ? (state.l ? '신상 · ' : '') + state.c : (kb ? (state.l ? '신상 ' : '') + kb.textContent : (state.l ? '신상' : title.getAttribute('data-default')));
       }
       if (push) {
         var h = [];
         if (state.c) h.push('c=' + encodeURIComponent(state.c));
         if (state.k) h.push('k=' + state.k);
+        if (state.l) h.push('l=' + state.l);
         try { history.replaceState(null, '', h.length ? '#' + h.join('&') : location.pathname + location.search); } catch (e) {}
       }
     }
     bar.addEventListener('click', function (ev) {
-      var b = ev.target.closest('[data-cat-kind],[data-cat-char]');
+      var b = ev.target.closest('[data-cat-kind],[data-cat-char],[data-cat-line]');
       if (!b) return;
-      if (b.hasAttribute('data-cat-kind')) state.k = b.getAttribute('data-cat-kind');
+      if (b.hasAttribute('data-cat-line')) state.l = b.getAttribute('data-cat-line');
+      else if (b.hasAttribute('data-cat-kind')) state.k = b.getAttribute('data-cat-kind');
       else { var c = b.getAttribute('data-cat-char'); state.c = state.c === c ? '' : c; }
       apply(true);
       if (b.hasAttribute('data-cat-char') && b.scrollIntoView) b.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
@@ -727,10 +735,11 @@
       window.addEventListener('resize', edge);
       edge();
     }
-    var m = location.hash.match(/c=([^&]+)/), k = location.hash.match(/k=(doll|figure)/);
+    var m = location.hash.match(/c=([^&]+)/), k = location.hash.match(/k=(doll|figure)/), ln = location.hash.match(/l=(new)/);
     if (m) { try { state.c = decodeURIComponent(m[1]); } catch (e) {} }
     if (k) state.k = k[1];
-    if (m || k) apply(false);
+    if (ln) state.l = ln[1];
+    if (m || k || ln) apply(false);
   })();
 })();
 

@@ -1879,3 +1879,61 @@ body:has(.home-main) .top .user-btn:active { transform: scale(.97); }
 @media (max-width: 420px) { body:has(.home-main) .user-txt { display: none; } body:has(.home-main) .top .user-btn { width: 38px; padding: 0; justify-content: center; } }
 .home-main > .quick { margin-top: clamp(4px, 1vw, 12px); }
 main.wrap { width: 100%; box-sizing: border-box; }
+
+/* ===== 2026-11-27 순서표: 맨 윗줄 넓은 띠, 시크왕·당첨자는 아래 두 칸 ===== */
+.home-main > .quick { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.qq { --qq-gold: #e9c56b; grid-column: 1 / -1; position: relative; isolation: isolate; overflow: hidden; display: grid; grid-template-columns: minmax(0, auto) minmax(0, 1fr); grid-template-areas: "badge badge" "now next" "stats go"; align-items: end; column-gap: clamp(20px, 3vw, 44px); row-gap: 10px; min-height: clamp(200px, 19vw, 260px); padding: clamp(20px, 2.4vw, 32px) clamp(20px, 2.6vw, 36px); border-radius: 16px; background: radial-gradient(70% 120% at 85% 40%, #1d6038 0%, #0f4224 45%, #0a351d 80%); color: #f6eccd; text-decoration: none; box-shadow: inset 0 0 0 1px rgba(233, 197, 107, .28), 0 22px 40px -26px rgba(10, 53, 29, .8); touch-action: manipulation; -webkit-tap-highlight-color: transparent; transition: transform .2s var(--ease, ease), box-shadow .2s; }
+.qq-art { position: absolute; inset: 0 0 0 auto; z-index: -1; width: 62%; height: 100%; object-fit: cover; object-position: 100% 50%; -webkit-mask-image: linear-gradient(90deg, transparent, #000 34%); mask-image: linear-gradient(90deg, transparent, #000 34%); transition: transform .6s var(--ease, ease); }
+.qq::before { content: ""; position: absolute; inset: 8px; z-index: -1; border-radius: 10px; box-shadow: inset 0 0 0 1px rgba(233, 197, 107, .16); pointer-events: none; }
+.qq-badge { grid-area: badge; justify-self: start; align-self: start; display: inline-flex; align-items: center; gap: 8px; padding: 6px 11px; border-radius: 8px; background: rgba(233, 197, 107, .14); box-shadow: inset 0 0 0 1px rgba(233, 197, 107, .4); color: var(--qq-gold); font: 700 13px/1 var(--f-display); letter-spacing: .02em; }
+.qq-badge i { width: 8px; height: 8px; border-radius: 50%; background: #ff5a4e; box-shadow: 0 0 0 0 rgba(255, 90, 78, .6); animation: qq-pulse 1.6s ease-out infinite; }
+@keyframes qq-pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 90, 78, .6); } 100% { box-shadow: 0 0 0 10px rgba(255, 90, 78, 0); } }
+.qq-now { grid-area: now; display: grid; gap: 6px; min-width: 0; margin-top: clamp(10px, 1.6vw, 22px); }
+.qq-now small { font-size: 13.5px; font-weight: 700; color: rgba(246, 236, 205, .72); }
+.qq-now strong { font: 400 clamp(30px, 3.6vw, 48px)/1.1 var(--f-display); letter-spacing: -0.03em; color: #fff6d8; text-shadow: 0 2px 18px rgba(233, 197, 107, .35); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 15em; }
+.qq-now em { font: 700 12px/1 var(--f-body); font-style: normal; vertical-align: middle; padding: 4px 7px; border-radius: 6px; background: var(--qq-gold); color: #0a351d; text-shadow: none; }
+.qq-next { grid-area: next; align-self: end; display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; max-width: 420px; }
+.qq-next li { display: inline-flex; align-items: center; gap: 7px; height: 32px; padding: 0 11px 0 5px; border-radius: 8px; background: rgba(5, 32, 17, .5); box-shadow: inset 0 0 0 1px rgba(233, 197, 107, .22); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); font-size: 13.5px; font-weight: 700; white-space: nowrap; }
+.qq-next b { display: grid; place-items: center; min-width: 22px; height: 22px; border-radius: 6px; background: rgba(233, 197, 107, .18); color: var(--qq-gold); font: 700 12px/1 var(--f-display); }
+.qq-next li.is-mine { background: var(--qq-gold); color: #0a351d; }
+.qq-next li.is-mine b { background: rgba(10, 53, 29, .14); color: #0a351d; }
+.qq-stats { grid-area: stats; display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 14px; color: rgba(246, 236, 205, .8); }
+.qq-stats b { font: 400 20px/1 var(--f-display); color: var(--qq-gold); margin-right: 2px; }
+.qq-off { font-size: 14px; }
+.qq-go { grid-area: go; justify-self: end; display: inline-flex; align-items: center; gap: 6px; height: 42px; padding: 0 16px 0 18px; border-radius: 10px; background: var(--qq-gold); color: #0a351d; font-size: 14.5px; font-weight: 800; box-shadow: 0 8px 18px -10px rgba(233, 197, 107, .9); }
+.qq-go i { font-style: normal; font-size: 20px; line-height: 1; margin-top: -2px; transition: transform .2s; }
+.qq:not(.is-live) .qq-badge { color: rgba(246, 236, 205, .85); }
+@media (hover: hover) and (pointer: fine) { .qq:hover { transform: translateY(-2px); box-shadow: inset 0 0 0 1px rgba(233, 197, 107, .45), 0 28px 48px -26px rgba(10, 53, 29, .9); } .qq:hover .qq-art { transform: scale(1.03); } .qq:hover .qq-go i { transform: translateX(3px); } }
+.qq:active { transform: scale(.99); }
+.qq:focus-visible { outline: 3px solid var(--qq-gold); outline-offset: 3px; }
+@media (max-width: 899px) { .qq { grid-template-columns: minmax(0, 1fr); grid-template-areas: "badge" "now" "next" "stats" "go"; align-items: start; } .qq-art { width: 72%; opacity: .55; } .qq-next { max-width: none; } .qq-go { justify-self: start; } }
+@media (max-width: 700px) { .home-main > .quick { grid-template-columns: minmax(0, 1fr); } .qq-go { justify-self: stretch; justify-content: center; } }
+@media (prefers-reduced-motion: reduce) { .qq-badge i { animation: none; } .qq, .qq-art { transition: none; } }
+
+/* ===== 대분류: 신상 / 라인업 ===== */
+.line-tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 4px 0 clamp(14px, 1.8vw, 20px); max-width: 560px; }
+.line-tabs button { -webkit-appearance: none; appearance: none; position: relative; display: grid; justify-items: start; gap: 4px; padding: 14px 18px; border: 0; border-radius: 12px; background: #fff; box-shadow: inset 0 0 0 1px var(--line); color: var(--ink); text-align: left; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent; transition: background .2s, box-shadow .2s, color .2s; }
+.line-tabs .lt-name { font: 400 clamp(19px, 1.8vw, 22px)/1.1 var(--f-display); letter-spacing: -0.03em; }
+.line-tabs small { font-size: 13px; color: var(--muted); }
+.line-tabs .lt-new .lt-name::after { content: "NEW"; margin-left: 8px; padding: 3px 6px; border-radius: 5px; vertical-align: 3px; background: #ff5a4e; color: #fff; font: 700 10.5px/1 var(--f-body); letter-spacing: .04em; }
+.line-tabs button[aria-pressed="true"] { background: #0a351d; color: #f6eccd; box-shadow: 0 12px 24px -16px rgba(10, 53, 29, .8); }
+.line-tabs button[aria-pressed="true"] small { color: rgba(246, 236, 205, .75); }
+@media (hover: hover) and (pointer: fine) { .line-tabs button[aria-pressed="false"]:hover { box-shadow: inset 0 0 0 1px var(--ink); } }
+.line-tabs button:active { transform: scale(.98); }
+.line-tabs button:focus-visible { outline: 3px solid #e9c56b; outline-offset: 2px; }
+@media (max-width: 599px) { .line-tabs { max-width: none; } }
+.card { position: relative; }
+.new-tag { position: absolute; top: 10px; left: 10px; z-index: 2; padding: 4px 7px; border-radius: 6px; background: #ff5a4e; color: #fff; font-size: 11.5px; font-weight: 800; letter-spacing: .02em; box-shadow: 0 4px 10px -4px rgba(180, 40, 30, .5); }
+/* 순서표 띠: 펭귄 사진 전체 배경, 글은 왼쪽 */
+.qq { grid-template-columns: auto auto; justify-content: start; grid-template-areas: "badge badge" "now now" "next next" "stats go"; align-items: center; background: #0d3f22; }
+.qq-art { inset: 0; width: 100%; -webkit-mask-image: none; mask-image: none; object-position: 100% 50%; }
+.qq::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(10, 53, 29, .55), rgba(10, 53, 29, 0) 55%); pointer-events: none; }
+.qq-now strong { max-width: 11em; }
+.qq-next { max-width: 520px; }
+.qq-go { justify-self: start; margin-left: 8px; }
+@media (max-width: 899px) { .qq { grid-template-columns: auto auto; grid-template-areas: "badge badge" "now now" "next next" "stats go"; } .qq-art { width: 100%; opacity: 1; } .qq-now strong, .qq-next { max-width: 62vw; } }
+@media (max-width: 699px) { .qq { grid-template-columns: minmax(0, 1fr); grid-template-areas: "badge" "now" "next" "stats" "go"; padding-bottom: 20px; } .qq-art { object-position: 100% 40%; } .qq::after { background: linear-gradient(90deg, rgba(10, 53, 29, .92) 30%, rgba(10, 53, 29, .2) 85%); } .qq-go { margin-left: 0; justify-self: stretch; justify-content: center; } .qq-now strong { max-width: 100%; } .qq-next { max-width: 100%; } }
+.qq-pic { position: absolute; inset: 0; z-index: -1; }
+@media (max-width: 699px) { .qq-pic { left: auto; width: 58%; -webkit-mask-image: linear-gradient(90deg, transparent, #000 45%); mask-image: linear-gradient(90deg, transparent, #000 45%); } .qq-art { object-position: 18% 30%; } .qq::after { background: linear-gradient(90deg, rgba(10, 53, 29, .6) 40%, rgba(10, 53, 29, 0) 90%); } .qq-next li { background: rgba(5, 32, 17, .72); } }
+@media (max-width: 480px) { .qq-next li:nth-child(n+4) { display: none; } }
+@media (min-width: 700px) { .qq { min-height: clamp(220px, 19vw, 300px); } .qq-art { object-position: 100% 22%; } }
