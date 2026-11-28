@@ -2340,3 +2340,9 @@ body::before { opacity: .42; filter: saturate(.7); }
 .line-tabs button[aria-pressed="true"]::after { top: auto; right: auto; }
 @media (max-width: 480px) { .line-tabs button, .line-tabs button[aria-pressed="true"] { display: block; padding: 10px 4px 12px; } .line-tabs { gap: 40px; } }
 @media (max-width: 480px) { .line-tabs button[aria-pressed="true"]::after { top: auto; right: auto; width: 34px; height: 2px; font-size: 0; } }
+
+/* ===== 2026-11-28 사용자 요청: 배경을 그냥 흰색으로 ===== */
+:root { --bg: #ffffff; }
+html, body { background: #ffffff; }
+body::before { display: none; }
+header.top::before { background: linear-gradient(180deg, rgba(255, 255, 255, .95) 0%, rgba(255, 255, 255, .88) 62%, rgba(255, 255, 255, 0) 100%); }
