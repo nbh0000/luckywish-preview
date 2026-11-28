@@ -326,10 +326,10 @@
   var sample = {
     list: [
       { id: -3, nickname: '모찌러버', summary: '라부부 랜덤박스 ×2', now: true },
-      { id: -2, nickname: '말랑콩떡', summary: '크라이베이비 피규어 ×1' },
-      { id: -1, nickname: '뽑기요정', summary: '스키니도그 블라인드 ×3' }
+      { id: -2, nickname: '말랑콩떡', summary: '크라이베이비 피규어 ×1', time: '16:04' },
+      { id: -1, nickname: '뽑기요정', summary: '스키니도그 블라인드 ×3', time: '16:06' }
     ],
-    orders: 12, items: 27, live: true, chatOn: true, chatFor: '모찌러버',
+    orders: 12, waiting: 2, items: 27, live: true, chatOn: true, chatFor: '모찌러버',
     chat: [
       { id: -3, author: '@모찌러버', message: '시크릿 제발 나와라~~' },
       { id: -2, author: '@모찌러버', message: '언박싱 너무 귀여워요 🩷' },
@@ -347,7 +347,9 @@
     list.innerHTML = rows.length ? rows.map(function (r, i) {
       seen[r.id] = true;
       var fresh = !first && !seenBuyer[r.id];
-      return '<li class="' + (r.now ? 'is-now' : '') + (fresh ? ' fresh' : '') + '"><span class="buyer-no">' + (r.now ? '지금' : i + 1) + '</span><span class="buyer-nick">' + esc(at(r.nickname)) + (r.first ? '<i class="buyer-first">첫 주문</i>' : '') + '</span><span class="buyer-item">' + lines(r.summary || '결제 완료') + '</span></li>';
+      // 2026-11-28 럭키위시 전용 순서표: 현재 카드(클로버·현재·1 / N) + '다음' 줄
+      if (r.now) return '<li class="is-now' + (fresh ? ' fresh' : '') + '"><span class="buyer-ava" aria-hidden="true"></span><span class="buyer-top"><b class="buyer-no">현재</b><em class="buyer-count">1 / ' + ((st.waiting || 0) + 1) + '</em></span><span class="buyer-nick">' + esc(at(r.nickname)) + (r.first ? '<i class="buyer-first">첫 주문</i>' : '') + '</span><span class="buyer-item">' + lines(r.summary || '결제 완료') + '</span></li>';
+      return '<li class="' + (fresh ? 'fresh' : '') + '"><span class="buyer-no">' + (i === 1 ? '다음' : i + 1) + '</span><span class="buyer-nick">' + esc(at(r.nickname)) + (r.first ? '<i class="buyer-first">첫 주문</i>' : '') + '</span><span class="buyer-item">' + lines(r.summary || '결제 완료') + '</span>' + (r.time ? '<time class="buyer-time">' + esc(r.time) + '</time>' : '') + '</li>';
     }).join('') : '<li class="side-empty">결제를 기다리는 중이에요</li>';
     if (rows.length && st.more > 0) list.insertAdjacentHTML('beforeend', '<li class="buyer-more">외 ' + st.more + '명 대기</li>');
     seenBuyer = seen;

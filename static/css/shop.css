@@ -2319,3 +2319,24 @@ header.top::before { content: ""; position: absolute; inset: 0 0 -34px; z-index:
 .wn-no { font-weight: 800; letter-spacing: -0.03em; }
 h1, h2, .page-title h1 { font-weight: 800; letter-spacing: -0.03em; }
 h1, h2, .page-title h1 { font-family: var(--f-display); font-weight: 800; letter-spacing: -0.03em; }
+
+/* 배경 그림 색감을 한층 눌러서 은은하게 (2026-11-28 "색감이 너무 쎄 백그라운드") */
+body::before { opacity: .42; filter: saturate(.7); }
+
+/* 신상 / 라인업: 예전 라인업북처럼 글자 탭 + 금색 밑줄 (2026-11-28) */
+.line-tabs { display: flex; justify-content: center; gap: clamp(28px, 5vw, 56px); max-width: none; margin: 6px 0 clamp(18px, 2.4vw, 28px); padding: 0; border-bottom: 1px solid color-mix(in srgb, var(--line) 80%, transparent); }
+.line-tabs button, .line-tabs button[aria-pressed="true"] { display: block; position: relative; padding: 10px 4px 14px; border-radius: 0; background: none; box-shadow: none; color: var(--muted); }
+.line-tabs button::before, .line-tabs button::after, .line-tabs button[aria-pressed="true"]::after, .line-tabs .lt-new .lt-name::after { content: none; display: none; }
+.line-tabs small { display: none; }
+.line-tabs .lt-name { font: 600 clamp(16px, 1.4vw, 18px)/1.2 var(--f-body); letter-spacing: .08em; }
+.line-tabs button[aria-pressed="true"] { color: var(--sage-d); }
+.line-tabs button[aria-pressed="true"] .lt-name { font-weight: 700; }
+.line-tabs button[aria-pressed="true"]::after { content: ""; display: block; position: absolute; left: 50%; bottom: -1px; width: 34px; height: 2px; margin-left: -17px; border-radius: 0; background: var(--gold); box-shadow: none; text-shadow: none; }
+@media (hover: hover) and (pointer: fine) { .line-tabs button[aria-pressed="false"]:hover { background: none; box-shadow: none; color: var(--ink); } }
+.line-tabs button:active { transform: none; opacity: .7; }
+@media (max-width: 480px) { .line-tabs button { padding: 10px 4px 12px; } }
+.friend-av img.is-photo { object-fit: cover; width: 100%; height: 100%; }
+.line-tabs .lt-new::before, .line-tabs button::before { content: none; display: none; }
+.line-tabs button[aria-pressed="true"]::after { top: auto; right: auto; }
+@media (max-width: 480px) { .line-tabs button, .line-tabs button[aria-pressed="true"] { display: block; padding: 10px 4px 12px; } .line-tabs { gap: 40px; } }
+@media (max-width: 480px) { .line-tabs button[aria-pressed="true"]::after { top: auto; right: auto; width: 34px; height: 2px; font-size: 0; } }
